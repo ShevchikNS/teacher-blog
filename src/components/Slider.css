@@ -1,0 +1,42 @@
+.Slider {
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: -webkit-center;
+}
+@media screen and (max-width: 799px)
+{
+    .Swiper {
+        width: 100%;
+    }
+
+}
+
+
+@media screen and (min-width: 800px){
+
+    .Swiper {
+        width: 100vh;
+    }
+}
+
+
+
+img {
+    margin-left: 5%;
+}
+p {
+    font-size: 2vh;
+    padding: 0 5%;
+}
+.swiper-button-next, .swiper-button-prev{
+    color: transparent;
+}
+.centered {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3vh;
+}

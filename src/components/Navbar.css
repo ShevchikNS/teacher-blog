@@ -1,0 +1,20 @@
+.AppBarMain {
+    background: #AC3B61;
+    padding-bottom: 3%;
+}
+#MainAppBar{
+    background-color:#AC3B61 ;
+}
+.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+.MuiBox-root.css-1t6c9ts {
+    justify-content: center;
+}
+/*.menuItems {*/
+/*    justify-content: center;*/
+/*}*/
+/*.menuButton{*/
+/*    margin: 0 5% 0 5%;*/
+/*}*/
