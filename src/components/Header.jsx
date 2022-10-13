@@ -15,7 +15,7 @@ const Header = () => {
                 <span> г. Гродно, ул. Вишневецкая, д. 14</span>
 
             </div>
-            <Button sx = {{color: "white"}} onClick={() => navigate('/signin')}>
+            <Button id="SignInButton" sx = {{color: "white"}} onClick={() => navigate('/signin')}>
                 Войти
             </Button>
         </div>

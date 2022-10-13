@@ -1,5 +1,6 @@
 .TeacherName {
     width: 40%;
+    padding-left: 15px;
 }
 .TeacherSchool {
     width: 50%;
@@ -11,4 +12,7 @@
     justify-content: space-around;
     display: flex;
     background-color: #EEE2DC;
+}
+#SignInButton{
+    color: white;
 }
