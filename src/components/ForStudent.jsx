@@ -1,17 +1,22 @@
-import React from 'react';
-
+import React, {useState} from 'react';
+import './ForStudent.css'
 import InputForm from "./InputForm";
 
 const ForStudent = () => {
+    const testsDbPath = 'tests'
+    const materialsDbPath = 'materials'
 
     return (
-        <div>
+        <div className="ForStudents">
             <div>
-                <h1>Тесты</h1>
-                <InputForm/>
+                <h1 className="TestsHeader">Тесты</h1>
+                <InputForm
+                    dbPath = {testsDbPath}/>
             </div>
             <div>
-                <h1>Материалы</h1>
+                <h1 className="MaterialsHeader">Материалы</h1>
+                <InputForm
+                    dbPath = {materialsDbPath}/>
             </div>
         </div>
     );

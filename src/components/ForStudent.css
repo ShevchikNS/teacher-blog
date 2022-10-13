@@ -1,0 +1,9 @@
+.TestsHeader, .MaterialsHeader {
+    margin-left: 45%;
+}
+@media screen and (min-width: 850px){
+    .ForStudents {
+        width: 60%;
+        margin-left: 20%;
+    }
+}
