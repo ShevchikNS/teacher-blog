@@ -13,6 +13,8 @@ import StickyFooter from "./Footer";
 
 
 const MainPage = () => {
+
+    const news = []
     return (
         <div>
             <Box sx={{flexGrow: 1}} className="MainBoxStyle">
@@ -33,7 +35,7 @@ const MainPage = () => {
                                     Наш сайт - это место для интересного общения, несмотря на границы и расстояния.
                                     На страницах школьного сайта Вы можете почерпнуть много полезной информации :
                                 </p>
-                                <ul className="listAboutSchool"  type="disc">
+                                <ul className="listAboutSchool" type="disc">
                                     <li>познакомиться с основными вехами истории школы,</li>
                                     <li>узнать о традициях школы и о наших достижениях,</li>
                                     <li>ознакомиться с нормативными документами образовательного учреждения, графиком
@@ -47,7 +49,15 @@ const MainPage = () => {
                         <PhotoGallery/>
                     </Grid>
                     <Grid item xs={12} md={2}>
-                       <h1>Объявления</h1>
+                        <h1>Объявления</h1>
+                        {
+                            news.length > 0 ?
+                                news.map((el) => <div>el</div>)
+                                :
+                                <div>
+                                Нет объявлений
+                                </div>
+                        }
                     </Grid>
 
                 </Grid>
