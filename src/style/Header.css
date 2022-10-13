@@ -22,6 +22,7 @@
 @media screen and (max-width: 850px) {
     .TeacherSchool {
         display: none;
+
     }
     .TeacherName {
         padding-left: 15px;
