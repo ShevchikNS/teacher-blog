@@ -6,7 +6,7 @@ import {addTestsAction, fetchTests, removeTestsAction} from "../store/testReduce
 import {TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import TodoItemComponent from "./TestComponent";
-import './InputForm.css'
+import '../style/InputForm.css'
 import {addMaterialsAction, fetchMaterials, removeMaterialsAction} from "../store/materialReducer";
 
 

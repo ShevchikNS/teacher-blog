@@ -4,7 +4,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import img1 from '../img/bookPhoto.jpg'
 import img2 from '../img/book1.jpg'
 
-import './Slider.css'
+import '../style/Slider.css'
 import 'swiper/css';
 import 'swiper/css/bundle'
 import 'swiper/css/autoplay'

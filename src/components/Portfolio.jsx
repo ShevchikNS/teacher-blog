@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import teacherPhoto from '../img/teacher.png'
-import './Portfolio.css'
+import '../style/Portfolio.css'
 
 
 export default function FullWidthGrid() {

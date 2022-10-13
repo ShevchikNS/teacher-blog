@@ -1,6 +1,5 @@
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
-import About from "../components/About";
 import MainPage from "../components/MainPage";
 import Portfolio from "../components/Portfolio";
 import ForStudent from "../components/ForStudent";

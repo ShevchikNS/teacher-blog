@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import './Navbar.css'
+import '../style/Navbar.css'
 import {useNavigate} from "react-router-dom";
 
 const ResponsiveAppBar = () => {

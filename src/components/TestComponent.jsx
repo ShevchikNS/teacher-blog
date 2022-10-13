@@ -2,17 +2,14 @@ import React from 'react';
 import {useState} from "react";
 import {Button, Card, CardActions, CardContent, TextField} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import './TestComponent.css'
-import {useDispatch, useSelector} from "react-redux";
-import {changeAuthAction} from "../store/authReducer";
+import '../style/TestComponent.css'
+import {useSelector} from "react-redux";
 
 const TodoItemComponent = ({item, item2, item3, onDelete, onEdit}) => {
     const [isEditMode, setIsEditMode] = useState(false)
     const [editedTestName, setEditedTestName] = useState(item)
     const [editedTestName2, setEditedTestName2] = useState(item)
-    const authState = useSelector(state => state.auth.authState)
     const currentUser = useSelector(state => state.currentUser)
-    const dispatch = useDispatch()
 
 
     const changeTestName = (e) => {

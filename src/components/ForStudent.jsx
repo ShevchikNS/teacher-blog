@@ -1,5 +1,5 @@
 import React from 'react';
-import './ForStudent.css'
+import '../style/ForStudent.css'
 import InputForm from "./InputForm";
 
 const ForStudent = () => {
