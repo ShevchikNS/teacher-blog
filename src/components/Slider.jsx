@@ -20,7 +20,6 @@ const Slider = () => {
     return (
         <div className="Slider" key="Slider">
             <Swiper
-                key = {Date.now()}
                 className="Swiper"
                 modules={[Navigation, Pagination, Parallax, Scrollbar, Autoplay, EffectFade, A11y]}
                 spaceBetween={50}
@@ -34,7 +33,7 @@ const Slider = () => {
             >
                 {
                     img.map((item, index) =>
-                        <SwiperSlide  className="container">
+                        <SwiperSlide key = {Math.random()}  className="container">
                             <img src={item} width="70%" height="20%" alt=""/>
                         </SwiperSlide>)
                 }
