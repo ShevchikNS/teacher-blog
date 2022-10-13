@@ -16,14 +16,15 @@ const InputForm = ({dbPath}) => {
     const [newTest, setNewTest] = useState('')
     const [newTest2, setNewTest2] = useState('')
     const [authState, setAuthState] = useState(false)
-    const currentUser = useSelector(state => state.currentUser)
+    const currentUser1 = useSelector(state => state.currentUser)
     const dispatch = useDispatch()
 
 
     const testsList = useSelector(state => state.tests.tests)
     const materialList = useSelector(state => state.materials.materials)
 
-    useEffect(() => {
+    useEffect((currentUser) => {
+        currentUser =currentUser1
         let userTests = []
         if (currentUser.userId !== "1") {
             setAuthState(true)
