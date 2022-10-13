@@ -11,15 +11,11 @@ import {addMaterialsAction, fetchMaterials, removeMaterialsAction} from "../stor
 
 
 const InputForm = ({dbPath}) => {
-    // const dbPath = dbPath1
-    console.log(dbPath)
     const [newTest, setNewTest] = useState('')
     const [newTest2, setNewTest2] = useState('')
     const [authState, setAuthState] = useState(false)
     const currentUser = useSelector(state => state.currentUser)
     const dispatch = useDispatch()
-
-
     const testsList = useSelector(state => state.tests.tests)
     const materialList = useSelector(state => state.materials.materials)
 
@@ -39,13 +35,9 @@ const InputForm = ({dbPath}) => {
                 dispatch(fetchTests(userTests))
             if (dbPath === 'materials')
                 dispatch(fetchMaterials(userTests))
-
-            // const data = await fetch('https://yourapi.com');
         }
 
-
         fetchData()
-            // make sure to catch any error
             .catch(console.error);
     }, [currentUser.userId, dbPath, dispatch])
 
@@ -134,12 +126,8 @@ const InputForm = ({dbPath}) => {
                             {
                                 dbPath === 'tests' ?
                                     testsList.map((testsItem, index) =>
-
                                         <TodoItemComponent
                                             onDelete={() => removeTodoItem(testsItem)}
-                                            // onEdit={(editTodo,editTodo2) => {
-                                            //     EditTodo(index, editTodo, editTodo2)
-                                            // }}
                                             item={testsItem.text}
                                             item2={testsItem.text2}
                                             item3={authState}
