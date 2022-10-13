@@ -1,0 +1,17 @@
+.TodoHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.TestName, .TestBody{
+    width: 50%;
+}
+.MuiFormControl-root.MuiTextField-root {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 20%;
+}

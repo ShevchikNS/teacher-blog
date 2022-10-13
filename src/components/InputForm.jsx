@@ -1,100 +1,192 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {db} from "../firebase";
 import {collection, addDoc, deleteDoc, doc, getDocs} from "firebase/firestore"
 import {useDispatch, useSelector} from "react-redux";
-import {addTestsAction, editTestsAction, removeTestsAction} from "../store/testReducer";
+import {addTestsAction, fetchTests, removeTestsAction} from "../store/testReducer";
 import {TextField} from "@mui/material";
 import Button from "@mui/material/Button";
-import * as PropTypes from "prop-types";
 import TodoItemComponent from "./TestComponent";
+import './InputForm.css'
+import {addMaterialsAction, fetchMaterials, removeMaterialsAction} from "../store/materialReducer";
+// import {setCurrentUserAction} from "../store/userReducer";
+// import {changeAuthAction} from "../store/authReducer";
 
-function TodoItem(props) {
-    return null;
-}
-
-TodoItem.propTypes = {
-    onDelete: PropTypes.func,
-    onEdit: PropTypes.func
-};
-const InputForm = () => {
-    const [newTodo, setNewTodo] = useState('')
+const InputForm = ({dbPath}) => {
+    // const dbPath = dbPath1
+    console.log(dbPath)
+    const [newTest, setNewTest] = useState('')
+    const [newTest2, setNewTest2] = useState('')
+    const [authState, setAuthState] = useState(false)
+    const currentUser = useSelector(state => state.currentUser)
     const dispatch = useDispatch()
-    const todoList = useSelector(state => state.tests.tests)
+
+
+    const testsList = useSelector(state => state.tests.tests)
+    const materialList = useSelector(state => state.materials.materials)
+
+    useEffect(() => {
+        let userTests = []
+        if (currentUser.userId !== "1") {
+            setAuthState(true)
+        } else console.log()
+        // declare the data fetching function
+        const fetchData = async () => {
+            const allTests = await getDocs(collection(db, `${dbPath}`))
+            allTests.forEach((doc) => {
+                    userTests.push(doc.data())
+                }
+            );
+            if (dbPath === 'tests')
+                dispatch(fetchTests(userTests))
+            if (dbPath === 'materials')
+                dispatch(fetchMaterials(userTests))
+
+            // const data = await fetch('https://yourapi.com');
+        }
+
+
+        fetchData()
+            // make sure to catch any error
+            .catch(console.error);
+    }, [])
 
     const changeTodoName = (e) => {
-        setNewTodo(e.target.value)
+        setNewTest(e.target.value)
+    }
+    const changeTodoName2 = (e) => {
+        setNewTest2(e.target.value)
     }
     const handleKeyPressAdd = async (event) => {
         if (event.key === 'Enter') {
-            await addTodoItem(newTodo)
+            await addTestItem(newTest)
         }
     }
-    const addTodoItem = async (newTest) => {
+    const addTestItem = async (newTest) => {
         const test = {
-            todoId: `${Date.now()}`,
+            testId: `${Date.now()}`,
             text: newTest,
+            text2: newTest2
         }
-        await addDoc(collection(db, "tests"), test)
-        dispatch(addTestsAction(test))
-        setNewTodo('')
-    }
-    const EditTodo = async (indexToEdit, editTodo) => {
-        console.log(editTodo + "!!!")
-        dispatch(editTestsAction(indexToEdit, editTodo))
+        await addDoc(collection(db, `${dbPath}`), test)
+        if (dbPath === 'tests')
+            dispatch(addTestsAction(test))
+        if (dbPath === 'materials')
+            dispatch(addMaterialsAction(test))
+        setNewTest('')
+        setNewTest2('')
     }
 
     const removeTodoItem = async (test) => {
-        dispatch(removeTestsAction(test.todoId))
-        let currentTodo = "";
-        const querySnapshot = await getDocs(collection(db, "tests"));
+        if (dbPath === 'tests')
+            dispatch(removeTestsAction(test.testId))
+        if (dbPath === 'materials')
+            dispatch(removeMaterialsAction(test.testId))
+            let currentTest = "";
+        const querySnapshot = await getDocs(collection(db, `${dbPath}`));
         querySnapshot.forEach((doc) => {
-                if (`${doc.data().todoId}` === `${test.todoId}`) {
-                    currentTodo = doc.id
+                if (`${doc.data().testId}` === `${test.testId}`) {
+                    currentTest = doc.id
                 }
             }
         );
-        await deleteDoc(doc(db, 'tests', `${currentTodo}`))
+        await deleteDoc(doc(db, `${dbPath}`, `${currentTest}`))
     }
+
+
     return (
-        <div>
-            <div className="TodoHeader">
-                <TextField
-                    id="layer2"
-                    label="Todo"
-                    variant="outlined"
-                    value={newTodo}
-                    multiline
-                    size='medium'
-                    onChange={changeTodoName}
-                    onKeyPress={(e) => handleKeyPressAdd(e)}
-                />
-                <Button
-                    variant="outlined"
-                    id="AddButton"
-                    onClick={async () => {
-                        await addTodoItem(newTodo)
-                    }}>
-                    ADD
-                </Button>
-            </div>
+        <div id={dbPath}>
             {
-                todoList.length > 0 ?
+                authState === true ?
+                    <>
+                        <div className="TodoHeader">
+                            <TextField
+                                className="TestName"
+                                id="layer2"
+                                label="Название теста"
+                                variant="outlined"
+                                value={newTest}
+                                multiline
+                                size='medium'
+                                onChange={changeTodoName}
+                                onKeyPress={(e) => handleKeyPressAdd(e)}
+                            />
+                            <TextField
+                                id="layer2"
+                                className="TestBody"
+                                label="Тело теста"
+                                variant="outlined"
+                                value={newTest2}
+                                multiline
+                                size='medium'
+                                onChange={changeTodoName2}
+                                onKeyPress={(e) => handleKeyPressAdd(e)}
+                            />
+                            <Button
+                                variant="outlined"
+                                id="AddButton"
+                                onClick={async () => {
+                                    await addTestItem(newTest)
+                                }}>
+                                ADD
+                            </Button>
+
+                        </div>
+                        <div className="allTodoList">
+                            {
+                                dbPath === 'tests' ?
+                                    testsList.map((testsItem, index) =>
+
+                                        <TodoItemComponent
+                                            onDelete={() => removeTodoItem(testsItem)}
+                                            // onEdit={(editTodo,editTodo2) => {
+                                            //     EditTodo(index, editTodo, editTodo2)
+                                            // }}
+                                            item={testsItem.text}
+                                            item2={testsItem.text2}
+                                            item3={authState}
+                                            key={index}>
+                                        </TodoItemComponent>
+                                    )
+                                    :
+                                    materialList.map((testsItem, index) =>
+
+                                        <TodoItemComponent
+                                            onDelete={() => removeTodoItem(testsItem)}
+                                            // onEdit={(editTodo,editTodo2) => {
+                                            //     EditTodo(index, editTodo, editTodo2)
+                                            // }}
+                                            item={testsItem.text}
+                                            item2={testsItem.text2}
+                                            item3={authState}
+                                            key={index}>
+                                        </TodoItemComponent>
+                                    )
+                            }
+                        </div>
+                    </>
+                    :
                     <div className="allTodoList">
                         {
-                            todoList.map((todoItem, index) =>
-
-                                <TodoItemComponent
-                                    onDelete={() => removeTodoItem(todoItem)}
-                                    onEdit={(editTodo) => {
-                                        EditTodo(index, editTodo)
-                                    }}
-                                    item={todoItem.text}
-                                    key={index}>
-                                </TodoItemComponent>
-                            )
+                            dbPath === 'tests' ?
+                                testsList.map((testsItem, index) =>
+                                    <TodoItemComponent
+                                        onDelete={() => removeTodoItem(testsItem)}
+                                        item={testsItem.text}
+                                        item2={testsItem.text2}
+                                        key={index}>
+                                    </TodoItemComponent>
+                                ) :
+                                materialList.map((testsItem, index) =>
+                                    <TodoItemComponent
+                                        onDelete={() => removeTodoItem(testsItem)}
+                                        item={testsItem.text}
+                                        item2={testsItem.text2}
+                                        key={index}>
+                                    </TodoItemComponent>
+                                )
                         }
                     </div>
-                    : console.log()
+
             }
         </div>
 
