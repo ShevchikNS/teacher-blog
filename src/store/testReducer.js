@@ -8,6 +8,7 @@ const defaultState = {
 const ADD_TEST = "ADD_TEST"
 const REMOVE_TEST = "REMOVE_TEST"
 const EDIT_TEST = "EDIT_TEST"
+const FETCH_TEST = "FETCH_TEST"
 
 
 export const testReducer = (state = defaultState, action) => {
@@ -15,14 +16,14 @@ export const testReducer = (state = defaultState, action) => {
         case ADD_TEST:
             return {...state, tests: [...state.tests, action.payload]}
         case REMOVE_TEST:
-            return {...state, tests: state.tests.filter((todo) => todo.todoId !== action.payload)}
+            return {...state, tests: state.tests.filter((test) => test.testId !== action.payload)}
         case EDIT_TEST:
             return {
-                ...state, tests: state.tests.map((todo, index) => {
+                ...state, tests: state.tests.map((test, index) => {
                     if (index === action.payload) {
-                        editTodoFunc(todo.todoId).then(r => {
+                        editTodoFunc(test.testId).then(r => {
                             const data = {
-                                text: action.newTodo
+                                text: action.newTest
                             };
                             const docRef = doc(db, "tests", r)
                             updateDoc(docRef, data)
@@ -34,19 +35,21 @@ export const testReducer = (state = defaultState, action) => {
                                 })
                         });
                         return {
-                            todoId: todo.todoId,
-                            text: action.newTodo,
-                            userId: todo.userId,
-                            folderId: todo.folderId
+                            testId: test.testId,
+                            text: action.newTest,
+                            userId: test.userId,
                         }
                     }
-                    return todo
+                    return test
                 })
             }
+        case FETCH_TEST:
+            return {tests: action.payload}
         default:
             return state
     }
 }
 export const addTestsAction = (payload) => ({type: ADD_TEST, payload})
 export const removeTestsAction = (payload) => ({type: REMOVE_TEST, payload})
-export const editTestsAction = (payload, newTodo) => ({type: EDIT_TEST, payload, newTodo})
+export const editTestsAction = (payload, newTest) => ({type: EDIT_TEST, payload, newTest})
+export const fetchTests= (payload) => ({type: FETCH_TEST, payload})
