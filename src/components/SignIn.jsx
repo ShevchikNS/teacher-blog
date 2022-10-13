@@ -18,7 +18,6 @@ import AlertComponent from "./Alert-component";
 import {setCurrentUserAction} from "../store/userReducer";
 import {collection, getDocs} from "firebase/firestore";
 import {db} from "../firebase";
-import {store} from "../store";
 
 
 const theme = createTheme();

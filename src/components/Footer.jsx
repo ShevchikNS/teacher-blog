@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import './Footer.css'
+
 function Copyright() {
     return (
         <Typography variant="body2" color="text.secondary">
