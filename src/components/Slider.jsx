@@ -36,11 +36,8 @@ const Slider = () => {
                     img.map((item, index) =>
                         <SwiperSlide  className="container">
                             <img src={item} width="70%" height="20%" alt=""/>
-                            <div className="centered">Мой блог</div>
                         </SwiperSlide>)
-
                 }
-
             </Swiper>
         </div>
     );
