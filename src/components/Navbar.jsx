@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -8,9 +7,7 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import './Navbar.css'
@@ -19,19 +16,12 @@ import {useNavigate} from "react-router-dom";
 const ResponsiveAppBar = () => {
     const navigate = useNavigate()
     const pages = ['Главная', 'Об учителе', 'Ученику', 'Родителю', 'Интернет-ресурсы'];
-    const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
-
     const handleCloseNavMenu = (e) => {
-        console.log(e.target.id)
         if(e.target.id === 'Главная')
             navigate('/')
         else if (e.target.id === 'Об учителе')
@@ -45,9 +35,6 @@ const ResponsiveAppBar = () => {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
 
     return (
         <AppBar position="static" id="MainAppBar">
@@ -102,8 +89,8 @@ const ResponsiveAppBar = () => {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                <MenuItem id = {page} key={page} onClick={handleCloseNavMenu}>
+                                    <Typography id = {page} onClick={handleCloseNavMenu} textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
