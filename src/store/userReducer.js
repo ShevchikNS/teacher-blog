@@ -1,5 +1,5 @@
 const currentUser = {
-    userId: "",
+    userId: "1",
     firstName: "",
     lastName: "",
     email: "",
