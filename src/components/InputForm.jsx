@@ -8,8 +8,7 @@ import Button from "@mui/material/Button";
 import TodoItemComponent from "./TestComponent";
 import './InputForm.css'
 import {addMaterialsAction, fetchMaterials, removeMaterialsAction} from "../store/materialReducer";
-// import {setCurrentUserAction} from "../store/userReducer";
-// import {changeAuthAction} from "../store/authReducer";
+
 
 const InputForm = ({dbPath}) => {
     // const dbPath = dbPath1

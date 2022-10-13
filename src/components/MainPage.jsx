@@ -1,15 +1,9 @@
 import React from 'react';
-import Navbar from "./Navbar";
-import Header from "./Header";
 import './MainPage.css'
-import Slider from "./Slider";
 import PhotoGallery from "./PhotoGallery";
 import Grid from "@mui/material/Grid";
-import Paper from '@mui/material/Paper';
-import {styled} from '@mui/material/styles';
 
 import Box from "@mui/material/Box";
-import StickyFooter from "./Footer";
 
 
 const MainPage = () => {
