@@ -18,6 +18,7 @@ import AlertComponent from "./Alert-component";
 import {setCurrentUserAction} from "../store/userReducer";
 import {collection, getDocs} from "firebase/firestore";
 import {db} from "../firebase";
+import {store} from "../store";
 
 
 const theme = createTheme();
@@ -29,8 +30,8 @@ export default function SignIn() {
     // const currentUser = useSelector(state => state.currentUser.user)
 
     const checkAuth = () => {
-        dispatch(changeAuthAction(true))
-        let path = `/`;
+        // store.getState().auth.authState = true
+        let path = '/';
         navigate(path);
     }
     const handleSubmit = async (event) => {
@@ -60,6 +61,7 @@ export default function SignIn() {
         } else {
             setOpen(false)
         }
+
     };
 
     return (
@@ -112,11 +114,6 @@ export default function SignIn() {
                             Sign In
                         </Button>
                         <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
                             <Grid item>
                                 <Link href="" onClick={() => navigate("/signup")} variant="body2">
                                     {"Don't have an account? Sign Up"}
