@@ -3,7 +3,7 @@ import React from 'react';
 const ForParents = () => {
     return (
         <div>
-            <h1>Пока что блок находится в разработке</h1>
+            <h1>Раздел находится в разработке</h1>
         </div>
     );
 };

@@ -101,7 +101,7 @@ const InputForm = ({dbPath}) => {
                             <TextField
                                 className="TestName"
                                 id="layer2"
-                                label="Название теста"
+                                label="Введите название"
                                 variant="outlined"
                                 value={newTest}
                                 multiline
@@ -112,7 +112,7 @@ const InputForm = ({dbPath}) => {
                             <TextField
                                 id="layer2"
                                 className="TestBody"
-                                label="Тело теста"
+                                label="Введите ссылку"
                                 variant="outlined"
                                 value={newTest2}
                                 multiline
