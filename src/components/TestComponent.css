@@ -1,0 +1,21 @@
+.testItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.MuiPaper-elevation1.MuiCard-root.CardContent.css-pwngrv-MuiPaper-root-MuiCard-root {
+    background-color: #EDC7B7;
+}
+.MuiTypography-root.MuiTypography-h5 {
+color: #AC3B61;
+}
+.MuiButton-sizeSmall.MuiButton-textSizeSmall{
+    color: #AC3B61;
+}
+.DeleteButton {
+    height: 100%;
+}
+.CardContent{
+    width: 100%;
+}
