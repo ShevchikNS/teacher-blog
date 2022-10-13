@@ -2,10 +2,8 @@ import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 import {publicRoutes, privateRoutes} from "../router";
 import {useSelector} from "react-redux";
-import { createBrowserHistory } from "history";
 
 const AppRouter = () => {
-    const customHistory = createBrowserHistory();
     const isAuth = useSelector(state => state.auth.authState)
     return (
         isAuth ?
