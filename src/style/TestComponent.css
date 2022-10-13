@@ -3,6 +3,8 @@
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 .MuiPaper-elevation1.MuiCard-root.CardContent.css-pwngrv-MuiPaper-root-MuiCard-root {
     background-color: #EDC7B7;
@@ -18,4 +20,8 @@ color: #AC3B61;
 }
 .CardContent{
     width: 100%;
+}
+#DeleteButton {
+    background-color: #AC3B61;
+    color: #EEE2DC;
 }

@@ -41,12 +41,12 @@ const MainPage = () => {
                         <PhotoGallery/>
                     </Grid>
                     <Grid item xs={12} md={2}>
-                        <h1>Объявления</h1>
+                        <h1 className="news">Объявления</h1>
                         {
                             news.length > 0 ?
                                 news.map((el) => <div>el</div>)
                                 :
-                                <div>
+                                <div className="newsItem">
                                 Нет объявлений
                                 </div>
                         }

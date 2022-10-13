@@ -6,6 +6,9 @@
     background-color:#AC3B61 ;
     color: #EEE2DC;
 }
+#Blog {
+    color: #EEE2DC;
+}
 .MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium {
     color: #EEE2DC;
     margin-left: 2.5%;

@@ -1,12 +1,15 @@
-.TeacherName {
-    width: 40%;
-    padding-left: 15px;
+@media screen and (min-width: 851px) {
+    .TeacherName {
+        width: 40%;
+        padding-left: 15px;
+    }
+    .TeacherSchool {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
 }
-.TeacherSchool {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-}
+
 .Header {
     padding-top: 5px;
     justify-content: space-around;
@@ -15,4 +18,12 @@
 }
 #SignInButton{
     color: white;
+}
+@media screen and (max-width: 850px) {
+    .TeacherSchool {
+        display: none;
+    }
+    .TeacherName {
+        padding-left: 15px;
+    }
 }

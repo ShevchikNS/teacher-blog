@@ -14,4 +14,21 @@
     margin-top: 5px;
     margin-bottom: 5px;
     width: 20%;
+
+}
+@media screen and (max-width: 850px) {
+    .MuiFormControl-root.MuiTextField-root {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 90%;
+    }
+    #AddButton {
+        background-color: #AC3B61;
+        color: #EEE2DC;
+        width: 60%;
+    }
+}
+#AddButton {
+    background-color: #AC3B61;
+    color: #EEE2DC;
 }

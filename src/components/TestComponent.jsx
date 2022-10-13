@@ -104,39 +104,8 @@ const TodoItemComponent = ({item, item2, item3, onDelete, onEdit}) => {
                             }
 
                         </Card>
-                        {/*<TextField*/}
-                        {/*    disabled*/}
-                        {/*    className="todoItem"*/}
-                        {/*    id="outlined-disabled"*/}
-                        {/*    multiline*/}
-                        {/*    value={item2}*/}
-                        {/*/>*/}
                     </>
-
-
             }
-            <div className="DeleteEditButton">
-                {
-                    // isEditMode ?
-                    //     <Button className="EditButton" variant="outlined" color="success" onClick={disableEditMode}>
-                    //         Save
-                    //     </Button>
-                    //     :
-                    //     <>
-                    //         <Button className="EditButton" id="EditButton" variant="outlined"
-                    //                 onClick={enableEditMode}>
-                    //             Edit
-                    //         </Button>
-
-                        // </>
-
-
-                }
-
-
-            </div>
-
-
         </div>
     );
 };
