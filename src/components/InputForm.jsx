@@ -16,15 +16,14 @@ const InputForm = ({dbPath}) => {
     const [newTest, setNewTest] = useState('')
     const [newTest2, setNewTest2] = useState('')
     const [authState, setAuthState] = useState(false)
-    const currentUser1 = useSelector(state => state.currentUser)
+    const currentUser = useSelector(state => state.currentUser)
     const dispatch = useDispatch()
 
 
     const testsList = useSelector(state => state.tests.tests)
     const materialList = useSelector(state => state.materials.materials)
 
-    useEffect((currentUser) => {
-        currentUser =currentUser1
+    useEffect(() => {
         let userTests = []
         if (currentUser.userId !== "1") {
             setAuthState(true)
@@ -48,7 +47,7 @@ const InputForm = ({dbPath}) => {
         fetchData()
             // make sure to catch any error
             .catch(console.error);
-    }, [])
+    }, [currentUser.userId, dbPath, dispatch])
 
     const changeTodoName = (e) => {
         setNewTest(e.target.value)
