@@ -18,8 +18,9 @@ const Slider = () => {
 
     const img = [img1,img2]
     return (
-        <div className="Slider">
+        <div className="Slider" key="Slider">
             <Swiper
+                key = {Date.now()}
                 className="Swiper"
                 modules={[Navigation, Pagination, Parallax, Scrollbar, Autoplay, EffectFade, A11y]}
                 spaceBetween={50}
@@ -32,9 +33,9 @@ const Slider = () => {
                 pagination={{clickable: true}}
             >
                 {
-                    img.map((i) =>
-                        <SwiperSlide className="container">
-                            <img src={i} width="70%" height="20%" alt=""/>
+                    img.map((item, index) =>
+                        <SwiperSlide  className="container">
+                            <img src={item} width="70%" height="20%" alt=""/>
                             <div className="centered">Мой блог</div>
                         </SwiperSlide>)
 
